@@ -1,0 +1,10 @@
+node_modules/
+dorm.db
+dorm.db-shm
+dorm.db-wal
+.env
+.dev.vars
+dist/
+.wrangler/
+*.log
+.DS_Store

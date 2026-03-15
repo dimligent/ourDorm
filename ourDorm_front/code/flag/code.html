@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#30abe8",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-checkbox:checked {
+            background-color: #10b981; /* Green for completed */
+            border-color: #10b981;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col">
+<!-- Top Header -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10">
+<div class="max-w-4xl mx-auto px-6 py-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">flag</span>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight">我的Flag</h1>
+</div>
+</div>
+</header>
+<!-- Main List Area -->
+<main class="flex-1 max-w-4xl w-full mx-auto px-6 py-8">
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Flag Item 1 -->
+<label class="flex items-center justify-between p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<span class="w-[80%] text-lg text-slate-700 dark:text-slate-200 font-medium">每天跑步3公里</span>
+<div class="relative flex items-center">
+<input class="custom-checkbox h-7 w-7 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-transparent text-emerald-500 focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</div>
+</label>
+<!-- Flag Item 2 -->
+<label class="flex items-center justify-between p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<span class="w-[80%] text-lg text-slate-700 dark:text-slate-200 font-medium">阅读《设计心理学》30页</span>
+<div class="relative flex items-center">
+<input checked="" class="custom-checkbox h-7 w-7 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-transparent text-emerald-500 focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</div>
+</label>
+<!-- Flag Item 3 -->
+<label class="flex items-center justify-between p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<span class="w-[80%] text-lg text-slate-700 dark:text-slate-200 font-medium">练习雅思听力1小时</span>
+<div class="relative flex items-center">
+<input class="custom-checkbox h-7 w-7 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-transparent text-emerald-500 focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</div>
+</label>
+<!-- Flag Item 4 -->
+<label class="flex items-center justify-between p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<span class="w-[80%] text-lg text-slate-700 dark:text-slate-200 font-medium">早起喝一杯温水</span>
+<div class="relative flex items-center">
+<input checked="" class="custom-checkbox h-7 w-7 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-transparent text-emerald-500 focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</div>
+</label>
+<!-- Flag Item 5 -->
+<label class="flex items-center justify-between p-5 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-colors group">
+<span class="w-[80%] text-lg text-slate-700 dark:text-slate-200 font-medium">晚上11点前睡觉</span>
+<div class="relative flex items-center">
+<input class="custom-checkbox h-7 w-7 rounded-lg border-2 border-slate-300 dark:border-slate-600 bg-transparent text-emerald-500 focus:ring-primary focus:ring-offset-0 transition-all cursor-pointer" type="checkbox"/>
+</div>
+</label>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 px-6">
+<div class="max-w-4xl mx-auto flex gap-4">
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white h-14 rounded-xl font-bold text-lg transition-all shadow-lg shadow-primary/20 active:scale-[0.98]">
+<span class="material-symbols-outlined">add_circle</span>
+<span>发起Flag</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 h-14 rounded-xl font-bold text-lg transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">delete</span>
+<span>垃圾箱</span>
+</button>
+</div>
+</footer>
+</body></html>

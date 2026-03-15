@@ -1,0 +1,1106 @@
+# 一、项目介绍
+
+为了记录美好的大学生活，纪念伟大的723宿舍，我准备制作一个723官方网站。网站中有宿舍成员介绍，可以记录日常生活日志，学期Flag，增强舍友之间的互动，促进723向着哈工程最美宿舍更进一步。
+
+# 二、解决痛点
+
+众所周知，723宿舍是一个团结友爱、热爱学习、互帮互助的先进模范宿舍，这样的宿舍性质导致宿舍成员在日常生活中有如下几个痛点：
+
+- 1、交流频繁且涉猎广泛：723宿舍不定期召开宿舍会议，商讨宿舍内的物资采买、值日情况、聚餐日程等等。以往我们是在微信中进行即时交流，但是缺乏会议内容总结和会议成果可视化。
+- 2、723宿舍有复杂的Flag：秉持共同进步的宗旨，723宿舍经常会分组制定阶段性Flag并互相监督，但是宿舍成员的记性不好，导致目标缺乏有效监督，难以达成共促共进的效果。本项目将记录并追踪Flag的进程，让大学生活更丰富美好。
+- 3、723宿舍学业繁忙：大学的特点之一是任务繁杂琐碎，各种期中期末考试，四六级、小组作业等等。常常让人头疼，容易遗落或逾期。本项目设有723专属倒计时功能，可以帮助舍内成员更加便捷地完成学业任务。
+
+综上所述，本网站可以集中解决723成员的生活学习痛点，避免了复杂的APP切换，可以轻量简洁地记录生活。
+
+# 三、功能详细
+
+## 1. 成员介绍
+
+提供宿舍成员的个人信息，包括姓名、生日、兴趣爱好、家乡、特长、职务、社团等等。
+
+## 2.分组Flag追踪
+
+- 可以发起Flag，选择参与成员，设立Flag内容。
+- 创建成功后可选择每日打卡，设置详情页，详情页显示参与人的打卡日志，统计打卡天数。
+- 设置垃圾箱，丢掉不喜欢的Flag，等以后再喜欢了可以加回来。
+
+## 3.倒数日
+
+- 支持自定义添加各类考试（四六级、期末考等）和纪念日等，设置目标日期，自动计算剩余天数
+- 按照紧急程度用不同颜色区分（>30天绿色、7-30天黄色、<7天红色）
+- 卡片式布局，支持拖拽排序，卡片可编辑、删除。
+
+## 4.宿舍日志
+
+- 支持记录宿舍重要事件（聚餐、出游等），可以上传图片，设有学期回顾，每过完一个学期自动生成回顾录。
+- 记录宿舍琐碎事务，如值日情况、杂务采买等。
+
+## 5. 公共功能
+
+- 用户系统：简单注册登录
+- 数据备份：支持导出宿舍日志为 PDF 纪念册
+
+# 四、前端页面设计
+
+采用经典上下分层布局，上边是顶部导航区，下边是主体功能区。
+
+### 顶部导航区：
+
+- 布局：通栏设计，位于页面最顶部，横向铺满整个视口。
+- 内容与排版：采用两端对齐的排版逻辑，左侧是首页，右侧横向排列“注册/登录”与“关于作者”两个功能入口。
+
+### 主体功能区：
+
+#### 1.首页
+
+采用左图右文的经典并列布局，左侧占页面的60%~70%。以浅色系为底色，搭配柔和的 accent 色（如四叶草的绿色、按钮的浅蓝/浅粉/灰紫）。
+
+- 左侧视觉区：以四叶草造型的交互按钮为核心视觉元素，四片叶子分别对应宿舍四位成员。支持单叶片点击，点击后跳转到对应成员的详情模块。
+- 右侧功能区：垂直排列三个圆角矩形胶囊按钮，按钮间保持均匀垂直间距。三个按钮分别显示：Flag追踪、倒数日、宿舍日志。
+
+#### **2.我的Flag功能界面**（还应该有一个详情页）
+
+采用顶部标题+列表主体+底部操作栏的分层布局。以浅色系为底色，打卡按钮采用「默认浅灰→完成绿色」的状态切换，强化完成感；操作按钮使用柔和的主题色，保持整体风格统一。
+
+- 顶部标题区：居左显示标题文字 “我的Flag”，字体加粗、字号稍大，明确标识当前功能模块。
+- 主体Flag列表区：采用垂直列表布局，承载用户已创建的所有Flag条目。 每条Flag由“文本描述区域”与“右侧打卡交互区域”组成，“文本描述区域”占比80%，水平排列。“右侧交互区域”为方形复选框样式的打卡按钮，默认状态为空白方框；用户点击后，方框内将显示对勾标识，标记该条Flag已完成打卡。
+- 底部操作栏：位于页面最下方，水平排列两个圆角矩形操作按钮，按钮分别显示“发起Flag”和“垃圾箱”。两个按钮保持均匀间距，视觉权重均衡。
+
+#### 3.倒数日功能界面（还应该有一个添加页面）
+
+采用顶部标题+列表主体+底部操作栏的分层布局。
+
+- 顶部标题区：居左显示标题文字 “倒数日”，字体加粗、字号稍大，明确标识当前功能模块。
+- 主体Flag列表区：采用垂直列表布局，承载用户已创建的所有倒数日条目。 每个条目左侧显示“距离某件事还有”（占70%），右侧显示“多少天”（占30%）。左侧是白色或极浅色，右侧是鲜艳一点的颜色。
+- 底部操作栏：位于页面最下方，水平排列两个圆角矩形操作按钮，按钮分别显示“添加倒数日”和“删除”。两个按钮保持均匀间距，视觉权重均衡。
+
+#### 4.宿舍日志功能页面
+
+采用顶部标题+列表主体+底部操作栏的分层布局。
+
+- 顶部标题区：居左显示标题文字 “宿舍日志”，字体加粗、字号稍大，明确标识当前功能模块。
+- 主体Flag列表区：采用垂直列表布局，承载用户已创建的日志条目。
+- 底部操作栏：位于页面最下方，水平排列两个圆角矩形操作按钮，按钮分别显示“添加日志”和“类别”。两个按钮保持均匀间距，视觉权重均衡。
+
+# 五、后端设计
+
+## 1. user 用户认证的接口
+
+### 1.1 POST /register 用户注册
+
+过程： 客户端向服务器发送用户注册信息，包括 `username` 和 `password`。服务器收到请求后会检查数据库中是否已经存在该用户名。如果用户名不存在，则创建新用户并保存到数据库中；若用户名已存在，则返回注册失败信息。
+
+```
+{
+    "code": "200",
+    "message": "注册成功"
+}
+```
+
+```
+{
+    "code": "400",
+    "message": "用户名已存在"
+}
+```
+
+### 1.2 POST /login 用户登录
+
+过程：客户端向服务器发送一个 JSON 数据，其中包含 `username` 和 `password` 两个字段。
+
+服务器收到请求后会对数据进行解析，并与数据库中的用户信息进行比对。如果用户名和密码正确，则服务器生成一个 JWT Token 并返回给客户端。客户端收到 Token 后，将其存储到localstorage里面的Authorization字段，以后每次请求管理员的接口的时候，将这个字段及其值作为一个新的请求头字段。
+
+```
+{
+    "code": "200",
+    "message": "登录成功",
+    "JWT": "eyJhbGciOiJIUzI1NiIsInR..."
+}
+```
+
+```
+{
+    "code": "400",
+    "message": "用户名或密码错误"
+}
+```
+
+### 1.3 GET /me 获取当前登录用户信息
+
+过程：客户端在登录成功后会获得服务器返回的 JWT Token，并将其存储在本地。之后客户端在访问该接口时，需要在请求头中携带 `Authorization` 字段。
+服务器会对 Token 进行验证，包括：
+
+- Token 是否存在
+- Token 是否被篡改
+- Token 是否已经过期
+
+验证通过后，服务器从 Token 中解析出用户身份信息，并返回当前登录用户的基本信息。
+
+```
+{
+    "code": "200",
+    "message": "获取用户信息成功",
+    "data": {
+        "userId": 1,
+        "username": "zhangsan"
+    }
+}
+```
+
+```
+{
+    "code": "401",
+    "message": "未登录或Token无效"
+}
+```
+
+## 2. members 成员信息接口
+
+### 2.1 GET /getmembers 获取宿舍成员列表
+
+过程：
+客户端向服务器发送请求，服务器从数据库中查询所有宿舍成员的信息，并返回成员列表数据。
+
+```
+{
+    "code": "200",
+    "message": "获取成员列表成功",
+    "data": [
+        {
+            "id": 1,
+            "name": "张三",
+            "birthday": "2003-05-01",
+            "hometown": "山东",
+            "hobby": "篮球",
+            "role": "舍长"
+        }
+    ]
+}
+```
+
+```
+{
+    "code": "500",
+    "message": "服务器内部错误"
+}
+```
+
+### 2.2 POST /addmembers 添加成员
+
+过程：客户端向服务器发送成员信息，包括姓名、生日、家乡、兴趣爱好等字段。服务器接收到数据后，将其写入数据库中。
+
+```
+{
+    "code": "200",
+    "message": "成员添加成功"
+}
+```
+
+```
+{
+    "code": "400",
+    "message": "成员信息不完整"
+}
+```
+
+## 3. Flag追踪接口
+
+### 3.1 POST /createFlag 创建Flag
+
+过程：客户端向服务器发送一个 JSON 数据，其中包含 Flag 的标题、内容以及参与成员列表。服务器接收到请求后，会将 Flag 信息保存到数据库，并创建对应的 Flag 记录。
+
+```
+{
+    "code": "200",
+    "message": "Flag创建成功"
+}
+```
+
+```
+{
+    "code": "400",
+    "message": "Flag信息不完整"
+}
+```
+
+### 3.2 GET /getFlags 获取Flag列表
+
+过程：客户端请求 Flag 列表，服务器从数据库中查询所有 Flag 信息，并返回 Flag 列表。
+
+```
+{
+    "code": "200",
+    "message": "获取Flag列表成功",
+    "data": [
+        {
+            "id": 1,
+            "title": "每天背50个单词",
+            "status": "进行中"
+        }
+    ]
+}
+```
+
+### 3.3 GET /getFlagDetail 获取Flag详情
+
+过程：客户端向服务器发送 Flag 的 `id`，服务器根据该 `id` 查询 Flag 的详细信息，包括参与成员以及打卡记录。
+
+```
+{
+    "code": "200",
+    "message": "获取Flag详情成功",
+    "data": {
+        "title": "每天背50个单词",
+        "members": [
+            {"id":1,"name":"张三"},
+            {"id":2,"name":"李四"}
+        ],
+        "checkinLogs":[
+            {
+                "member":"张三",
+                "date":"2026-03-12"
+            }
+        ]
+    }
+}
+```
+
+### 3.4 POST /checkinFlag Flag打卡
+
+过程：参与成员在完成当天任务后，可以进行打卡。客户端向服务器发送 Flag `id` 以及打卡用户信息，服务器记录打卡日志。
+
+```
+{
+    "code":"200",
+    "message":"打卡成功"
+}
+```
+
+```
+{
+    "code":"400",
+    "message":"今日已打卡"
+}
+```
+
+### 3.5 POST /deleteFlag 删除Flag（加入垃圾箱）
+
+过程：客户端提交需要删除的 Flag `id`，服务器不会直接删除数据，而是将 Flag 状态修改为 **已删除（状态标记为1）**。
+
+```
+{
+    "code":"200",
+    "message":"Flag已移入垃圾箱"
+}
+```
+
+### 3.6 POST /restoreFlag 恢复Flag
+
+过程：客户端提交需要恢复的 Flag `id`，服务器将 Flag 状态恢复为正常状态（状态标记为0）。
+
+```
+{
+    "code":"200",
+    "message":"Flag恢复成功"
+}
+```
+
+## 4. 倒数日接口
+
+### 4.1 POST /createCountdown 创建倒数日
+
+过程：客户端提交倒数日名称以及目标日期，服务器保存数据并计算剩余天数。
+
+```
+{
+    "code":"200",
+    "message":"倒数日创建成功"
+}
+```
+
+### 4.2 GET /getCountdowns 获取倒数日列表
+
+过程：客户端请求倒数日列表，服务器查询数据库并返回倒数日数据，同时计算剩余天数。
+
+```
+{
+    "code":"200",
+    "message":"获取倒数日成功",
+    "data":[
+        {
+            "id":1,
+            "title":"英语六级考试",
+            "date":"2026-06-15",
+            "daysLeft":95,
+            "color":"yellow"
+        }
+    ]
+}
+```
+
+### 4.3 POST /updateCountdown 编辑倒数日
+
+过程：客户端向服务器发送需要修改的倒数日信息，包括倒数日 `id`、标题以及目标日期。服务器接收到请求后，根据 `id` 在数据库中查找对应记录，并更新倒数日信息。如果更新成功，则返回成功信息；若倒数日不存在，则返回失败信息。
+
+```
+{
+    "code": "200",
+    "message": "倒数日修改成功"
+}
+```
+
+```
+{
+    "code": "400",
+    "message": "倒数日不存在"
+}
+```
+
+### 4.4 POST /deleteCountdown 删除倒数日
+
+过程：客户端提交需要删除的倒数日 `id`，服务器删除数据库中的对应记录。
+
+```
+{
+    "code":"200",
+    "message":"删除成功"
+}
+```
+
+## 5. 宿舍日志接口
+
+### 5.1 POST /createLog 创建宿舍日志
+
+过程：客户端提交日志标题、内容以及图片信息，服务器接收数据并保存到数据库中。
+
+```
+{
+    "code":"200",
+    "message":"日志创建成功"
+}
+```
+
+### 5.2 GET /getLog 获取日志
+
+过程：客户端请求日志列表，服务器查询数据库并返回该日志的完整内容以及图片。
+
+```
+{
+    "code":"200",
+    "message":"获取日志成功",
+    "data":{
+        "title":"宿舍聚餐",
+        "content":"今天大家一起吃火锅",
+        "images":[
+            "img1.jpg"
+        ]
+    }
+}
+```
+
+### 5.3 POST /deleteLog 删除日志
+
+过程：客户端提交需要删除的日志 `id`，服务器删除数据库中的对应日志记录。
+
+```
+{
+    "code":"200",
+    "message":"日志删除成功"
+}
+```
+
+# 六、数据库表设计
+
+## 6.1 users 用户表
+
+| 字段名   | 类型   | 是否外键 | 注释   |
+| -------- | ------ | -------- | ------ |
+| userId   | int64  | ❌       | 用户ID |
+| userName | string | ❌       | 用户名 |
+| password | string | ❌       | 密码   |
+
+## 6.2 members 宿舍成员表
+
+| 字段名   | 类型   | 是否外键 | 注释     |
+| -------- | ------ | -------- | -------- |
+| memberId | int64  | ❌       | 成员ID   |
+| name     | string | ❌       | 成员姓名 |
+| birthday | date   | ❌       | 生日     |
+| hometown | string | ❌       | 家乡     |
+| hobby    | string | ❌       | 爱好     |
+| role     | string | ❌       | 宿舍角色 |
+| avatar   | string | ❌       | 成员头像 |
+
+## 6.3 Flag 表
+
+| 字段名      | 类型     | 是否外键 | 注释                   |
+| ----------- | -------- | -------- | ---------------------- |
+| flagId      | int64    | ❌       | Flag ID                |
+| title       | string   | ❌       | Flag标题               |
+| content     | string   | ❌       | Flag内容               |
+| needCheckin | boolean  | ❌       | 是否需要打卡           |
+| status      | string   | ❌       | 状态(active / deleted) |
+| createTime  | datetime | ❌       | 创建时间（时间戳）     |
+
+## 6.4 flag_member Flag参与成员表
+
+| 字段名   | 类型  | 是否外键 | 注释    |
+| -------- | ----- | -------- | ------- |
+| id       | int64 | ❌       | 主键    |
+| flagId   | int64 | ✅       | Flag ID |
+| memberId | int64 | ✅       | 成员ID  |
+
+## 6.5 flag_checkin Flag参与成员表
+
+| 字段名      | 类型  | 是否外键 | 注释     |
+| ----------- | ----- | -------- | -------- |
+| checkinId   | int64 | ❌       | 打卡ID   |
+| flagId      | int64 | ✅       | Flag ID  |
+| memberId    | int64 | ✅       | 成员ID   |
+| checkinDate | date  | ❌       | 打卡日期 |
+
+## 6.6 countdown 倒数日表
+
+| 字段名      | 类型     | 是否外键 | 注释     |
+| ----------- | -------- | -------- | -------- |
+| countdownId | int64    | ❌       | 倒数日ID |
+| title       | string   | ❌       | 标题     |
+| targetDate  | date     | ❌       | 目标日期 |
+| orderIndex  | int      | ❌       | 卡片排序 |
+| createTime  | datetime | ❌       | 创建时间 |
+
+## 6.7 dorm_log 宿舍日志表
+
+| 字段名     | 类型     | 是否外键 | 注释           |
+| ---------- | -------- | -------- | -------------- |
+| logId      | int64    | ❌       | 日志ID         |
+| title      | string   | ❌       | 标题           |
+| content    | string   | ❌       | 内容           |
+| images     | string   | ❌       | 图片(JSON数组) |
+| type       | string   | ❌       | 日志类型       |
+| createTime | datetime | ❌       | 创建时间       |
+
+# 七、开发阶段
+
+## 阶段一：系统设计与环境搭建
+
+**主要任务**：
+
+- 搭建后端开发环境
+- 初始化 Hono 项目结构
+- 初始化 Vue 前端项目
+- 配置 SQLite 数据库
+- 设计数据库表结构
+- 完成系统目录结构设计
+
+**技术栈**
+
+后端：
+
+- Hono
+- Node.js / Bun 运行环境
+- JWT 身份认证
+- SQLite 数据库
+
+前端：
+
+- Vue.js
+- Vite 构建工具
+- Axios / Fetch API
+
+**阶段成果**
+
+- 后端项目基础框架
+- 前端项目初始化工程
+- 数据库表结构设计完成
+- API路由框架搭建完成
+
+## 阶段二：后端核心功能开发
+
+**主要任务**
+
+开发后端API接口，实现核心业务逻辑。
+
+开发模块包括：
+
+### 用户系统模块
+
+实现：
+
+- 用户注册
+- 用户登录
+- JWT Token认证
+- 获取当前用户信息
+
+### 成员信息模块
+
+实现：
+
+- 成员信息查询
+- 成员信息添加
+
+### Flag追踪模块
+
+实现：
+
+- 创建Flag
+- 获取Flag列表
+- 获取Flag详情
+- Flag打卡
+- Flag删除与恢复
+
+### 倒数日模块
+
+实现：
+
+- 创建倒数日
+- 获取倒数日列表
+- 编辑倒数日
+- 删除倒数日
+
+### 宿舍日志模块
+
+实现：
+
+- 创建日志
+- 获取日志
+- 删除日志
+
+**技术栈**
+
+- Hono
+- SQLite
+- JWT认证
+- RESTful API设计
+
+**阶段成果**
+
+- 完整后端API接口
+- API接口测试通过
+- 数据库读写功能稳定
+
+# 阶段三：前端界面开发
+
+**主要任务**
+
+开发用户界面并实现与后端API交互。
+
+主要页面包括：
+
+### 首页
+
+实现：
+
+- 四叶草成员入口
+- Flag模块入口
+- 倒数日入口
+- 宿舍日志入口
+
+### Flag管理页面
+
+实现：
+
+- Flag列表展示
+- Flag打卡功能
+- 创建Flag
+- Flag垃圾箱
+
+### 倒数日页面
+
+实现：
+
+- 倒数日卡片展示
+- 添加倒数日
+- 编辑倒数日
+- 删除倒数日
+
+### 宿舍日志页面
+
+实现：
+
+- 日志列表展示
+- 添加日志
+- 图片展示
+- 日志分类
+
+**技术栈**
+
+- Vue.js
+- HTML5 / CSS3
+- JavaScript
+- Axios / Fetch API
+- Flex / Grid 布局
+
+**阶段成果**
+
+- 完整前端页面
+- 前后端数据联调成功
+- 基本交互功能实现
+
+# 阶段四：系统测试与优化
+
+**主要任务**
+
+对系统进行全面测试并修复问题。
+
+测试内容包括：
+
+- 用户注册登录测试
+- Token权限验证
+- Flag打卡逻辑测试
+- 倒数日计算测试
+- 日志图片上传测试
+- API异常处理测试
+
+**技术栈**
+
+- Postman
+- 浏览器开发者工具
+- SQLite数据库检查
+
+**阶段成果**
+
+- 系统Bug修复
+- 功能稳定运行
+- 完整测试报告
+d:\wangan\learning_time\ourDorm_front\src\views\Flags.vue
+
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { flagApi } from '../api'
+import type { Flag } from '../types'
+
+const router = useRouter()
+const flags = ref<Flag[]>([])
+const showCreateModal = ref(false)
+const showTrashModal = ref(false)
+const deletedFlags = ref<Flag[]>([])
+
+const newFlag = ref({
+  title: '',
+  content: '',
+  needCheckin: true,
+  memberIds: [] as number[]
+})
+
+const loadFlags = async () => {
+  try {
+    const response = await flagApi.getFlags()
+    if (response.code === '200' && response.data) {
+      flags.value = response.data.filter(f => f.status === 'active')
+      deletedFlags.value = response.data.filter(f => f.status === 'deleted')
+    }
+  } catch (error) {
+    console.error('Failed to load flags:', error)
+  }
+}
+
+const createFlag = async () => {
+  try {
+    const response = await flagApi.createFlag(newFlag.value)
+    if (response.code === '200') {
+      showCreateModal.value = false
+      newFlag.value = { title: '', content: '', needCheckin: true, memberIds: [] }
+      await loadFlags()
+    }
+  } catch (error) {
+    console.error('Failed to create flag:', error)
+  }
+}
+
+const checkinFlag = async (flagId: number) => {
+  try {
+    const response = await flagApi.checkinFlag(flagId)
+    if (response.code === '200') {
+      await loadFlags()
+    }
+  } catch (error) {
+    console.error('Failed to checkin flag:', error)
+  }
+}
+
+const deleteFlag = async (id: number) => {
+  try {
+    const response = await flagApi.deleteFlag(id)
+    if (response.code === '200') {
+      await loadFlags()
+    }
+  } catch (error) {
+    console.error('Failed to delete flag:', error)
+  }
+}
+
+const restoreFlag = async (id: number) => {
+  try {
+    const response = await flagApi.restoreFlag(id)
+    if (response.code === '200') {
+      await loadFlags()
+    }
+  } catch (error) {
+    console.error('Failed to restore flag:', error)
+  }
+}
+
+const viewFlagDetail = (flagId: number) => {
+  router.push(`/flags/${flagId}`)
+}
+
+onMounted(() => {
+  loadFlags()
+})
+</script>
+
+<template>
+  <div class="flags-container">
+    <div class="header">
+      <h1 class="title">我的Flag</h1>
+    </div>
+    
+    <div class="flags-list">
+      <div v-if="flags.length === 0" class="empty-state">
+        <p>还没有Flag，快去创建一个吧！</p>
+      </div>
+      
+      <div v-for="flag in flags" :key="flag.id" class="flag-item">
+        <div class="flag-content" @click="viewFlagDetail(flag.id)">
+          <div class="flag-title">{{ flag.title }}</div>
+          <div class="flag-description">{{ flag.content }}</div>
+          <div v-if="flag.members && flag.members.length > 0" class="flag-members">
+            <span v-for="member in flag.members" :key="member.id" class="member-tag">
+              {{ member.name }}
+            </span>
+          </div>
+        </div>
+        
+        <div class="flag-actions">
+          <button 
+            v-if="flag.needCheckin"
+            class="checkin-btn"
+            @click="checkinFlag(flag.id)"
+          >
+            ✓
+          </button>
+          <button class="delete-btn" @click="deleteFlag(flag.id)">
+            🗑️
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-actions">
+      <button class="action-btn primary" @click="showCreateModal = true">
+        发起Flag
+      </button>
+      <button class="action-btn secondary" @click="showTrashModal = true">
+        垃圾箱
+      </button>
+    </div>
+    
+    <div v-if="showCreateModal" class="modal-overlay" @click.self="showCreateModal = false">
+      <div class="modal">
+        <h2>创建Flag</h2>
+        <div class="form-group">
+          <label>Flag标题</label>
+          <input v-model="newFlag.title" type="text" placeholder="例如：每天背50个单词" />
+        </div>
+        <div class="form-group">
+          <label>Flag内容</label>
+          <textarea v-model="newFlag.content" placeholder="详细描述你的Flag..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>
+            <input v-model="newFlag.needCheckin" type="checkbox" />
+            需要每日打卡
+          </label>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-cancel" @click="showCreateModal = false">取消</button>
+          <button class="btn-confirm" @click="createFlag">创建</button>
+        </div>
+      </div>
+    </div>
+    
+    <div v-if="showTrashModal" class="modal-overlay" @click.self="showTrashModal = false">
+      <div class="modal">
+        <h2>垃圾箱</h2>
+        <div class="trash-list">
+          <div v-if="deletedFlags.length === 0" class="empty-state">
+            <p>垃圾箱是空的</p>
+          </div>
+          <div v-for="flag in deletedFlags" :key="flag.id" class="trash-item">
+            <span>{{ flag.title }}</span>
+            <button class="restore-btn" @click="restoreFlag(flag.id)">恢复</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-cancel" @click="showTrashModal = false">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.flags-container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+.header {
+  padding: 20px 0;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.flags-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.flag-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.flag-item:hover {
+  transform: translateY(-2px);
+}
+
+.flag-content {
+  flex: 1;
+  cursor: pointer;
+}
+
+.flag-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.flag-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.flag-members {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.member-tag {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+}
+
+.flag-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: 15px;
+}
+
+.checkin-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 20px;
+  color: #ddd;
+  transition: all 0.3s ease;
+}
+
+.checkin-btn:hover {
+  border-color: #4caf50;
+  color: #4caf50;
+}
+
+.delete-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #ffebee;
+}
+
+.footer-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn.primary {
+  background: #4caf50;
+  color: white;
+}
+
+.action-btn.primary:hover {
+  background: #45a049;
+}
+
+.action-btn.secondary {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.action-btn.secondary:hover {
+  background: #e0e0e0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-cancel,
+.btn-confirm {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.btn-confirm {
+  background: #4caf50;
+  color: white;
+}
+
+.trash-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.trash-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.restore-btn {
+  padding: 6px 16px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+</style>

@@ -1,0 +1,7 @@
+**/node_modules/
+ourDorm_back/.wrangler/
+ourDorm_back/dorm.db*
+ourDorm_front/dist/
+**/.env*
+**/*.log
+ourDorm_back/_git_backup/

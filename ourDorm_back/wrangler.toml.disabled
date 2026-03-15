@@ -1,0 +1,13 @@
+name = "ourdorm"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "development"
+JWT_SECRET = "723-dorm-secret-key"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dorm"
+database_id = "00d0c505-75d1-4f02-a5b7-07cd018d1dc7"
