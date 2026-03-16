@@ -13,13 +13,14 @@ const app = new Hono<{ Bindings: Env }>();
 app.use(
   "/*",
   cors({
-   origin: (origin) => {
+    origin: (origin) => {
       if (!origin) return undefined;
 
       const allowed = [
         /^https:\/\/ourdorm\.pages\.dev$/,
-        /^https:\/\/[a-z0-9-]+\.ourdorm\.pages\.dev$/, // 预览：8c85be46.ourdorm.pages.dev 这种
-        /^http:\/\/localhost:\d+$/, // 可选：本地开发
+        /^https:\/\/[a-z0-9-]+\.ourdorm\.pages\.dev$/, // preview: 8c85be46.ourdorm.pages.dev
+        /^https:\/\/ourdorm\.chai\.qzz\.io$/,
+        /^http:\/\/localhost:\d+$/, // local dev
       ];
 
       return allowed.some((re) => re.test(origin)) ? origin : undefined;
@@ -27,7 +28,6 @@ app.use(
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
   }),
-
 );
 
 app.get("/", (c) => {
@@ -45,3 +45,4 @@ app.route("/countdown", countdownRouter);
 app.route("/logs", logsRouter);
 
 export default app;
+
