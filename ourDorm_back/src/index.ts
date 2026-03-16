@@ -13,10 +13,21 @@ const app = new Hono<{ Bindings: Env }>();
 app.use(
   "/*",
   cors({
-    origin: "*",
+   origin: (origin) => {
+      if (!origin) return undefined;
+
+      const allowed = [
+        /^https:\/\/ourdorm\.pages\.dev$/,
+        /^https:\/\/[a-z0-9-]+\.ourdorm\.pages\.dev$/, // 预览：8c85be46.ourdorm.pages.dev 这种
+        /^http:\/\/localhost:\d+$/, // 可选：本地开发
+      ];
+
+      return allowed.some((re) => re.test(origin)) ? origin : undefined;
+    },
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
   }),
+
 );
 
 app.get("/", (c) => {
